@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h3 class="center-me">Login</h3>
+      <form (submit)="login();">
+        <div class="form-group row">
+          <label for="email" class="col-md-2 col-form-label">Email</label>
+          <div class="col-md-10">
+            <input id="email" class="form-control" name="email" type="email" placeholder="abc123@missouri.mail.edu" [(ngModel)]="email"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="password" class="col-md-2 col-form-label">Password</label>
+          <div class="col-md-10">
+            <input id="password" class="form-control" name="password" type="password" [(ngModel)]="password"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
