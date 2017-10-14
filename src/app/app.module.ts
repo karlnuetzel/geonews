@@ -5,10 +5,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { D3Service } from 'd3-ng2-service';
+import { D3MapComponent } from './d3-map/d3-map.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    D3MapComponent
   ],
   imports: [
     BrowserModule,
