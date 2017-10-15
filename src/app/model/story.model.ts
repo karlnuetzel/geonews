@@ -8,6 +8,8 @@ export class Story {
   latitude: number;
   longitude: number;
 
+  relatedStories: Array<Story> = [];
+
   constructor(title: string, description: string, url: string, date: Date, latitude: number, longitude: number) {
     this.title = title;
     this.description = description;

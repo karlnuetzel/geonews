@@ -25,7 +25,7 @@ export class StoryService {
         //     reject(error);
         //   }
         // );
-        resolve([new Story("Donald trump is president forever now."), new Story("Stephen paddock was a PACIFIST? Find out more here"), new Story("Critics of IntelliJ fall behind as their master race counterparts develop at an accelerated pace.")]);
+        // resolve([new Story("Donald trump is president forever now."), new Story("Stephen paddock was a PACIFIST? Find out more here"), new Story("Critics of IntelliJ fall behind as their master race counterparts develop at an accelerated pace.")]);
       }
     );
   }
@@ -50,7 +50,7 @@ export class StoryService {
         //     reject(error);
         //   }
         // );
-        resolve([new Story("Donald trump is president forever now."), new Story("Stephen paddock was a PACIFIST? Find out more here"), new Story("Critics of IntelliJ fall behind as their master race counterparts develop at an accelerated pace.")]);
+        // resolve([new Story("Donald trump is president forever now."), new Story("Stephen paddock was a PACIFIST? Find out more here"), new Story("Critics of IntelliJ fall behind as their master race counterparts develop at an accelerated pace.")]);
       }
     );
   }
