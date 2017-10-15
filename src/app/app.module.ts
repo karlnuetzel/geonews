@@ -15,6 +15,7 @@ import {StoriesComponent} from "./stories/stories.component";
 import {CommonModule} from "@angular/common";
 import {D3Service} from "d3-ng2-service";
 import { D3MapComponent } from './d3-map/d3-map.component';
+import {StoryService} from "./services/story.service";
 
 const routes: Routes = [
   {
@@ -64,7 +65,8 @@ const routes: Routes = [
   providers: [
     AuthService,
     AuthGuard,
-    D3Service
+    D3Service,
+    StoryService
   ],
   entryComponents: [
     AppComponent

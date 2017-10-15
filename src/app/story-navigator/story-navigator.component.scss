@@ -1,0 +1,34 @@
+@import "../../variables";
+
+$navigatorHeight: 50px;
+$navigatorBorderWidth: 6px;
+$navigatorHeightWithoutBorder: $navigatorHeight - $navigatorBorderWidth;
+$backArrowSize: $navigatorHeightWithoutBorder - 10px;
+$currentStorySectionFontSize: $navigatorHeightWithoutBorder - 20px;
+$currentStorySectionLineHeight: $navigatorHeightWithoutBorder;
+$alphaAmount: 0.7;
+$backgroundColor: rgba(red(map-get($colors, secondary)), green(map-get($colors, secondary)), blue(map-get($colors, secondary)), $alphaAmount);
+$darkenAmount: 25;
+$borderColor: rgba(red(darken($backgroundColor, $darkenAmount)), green(darken($backgroundColor, $darkenAmount)), blue(darken($backgroundColor, $darkenAmount)), $alphaAmount);
+
+.story-navigator-bar {
+  height: $navigatorHeight;
+  background-color: $backgroundColor;
+  border-bottom: $navigatorBorderWidth solid $borderColor;
+}
+
+.back-arrow {
+  font-size: $backArrowSize;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.back-arrow-container {
+  height: $navigatorHeightWithoutBorder;
+  border-right: $navigatorBorderWidth solid $borderColor;
+}
+
+.current-story-section {
+  line-height: $currentStorySectionLineHeight;
+  font-size: $currentStorySectionFontSize;
+}

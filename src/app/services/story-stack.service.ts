@@ -3,6 +3,9 @@ import {Story} from "../model/story.model";
 export class StoryStackService {
   private static storyStack: Array<Story> = [];
 
+  constructor() {
+  }
+
   public push(story: Story) {
     StoryStackService.storyStack.push(story);
   }

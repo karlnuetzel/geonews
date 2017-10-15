@@ -1,0 +1,8 @@
+<div class="row stories">
+  <div class="col-md-12">
+    <h2 class="center-me">Top Stories</h2>
+    <ng-container *ngFor="let story of stories; let i = index;">
+      <h4>{{i + 1}}. {{story.title}}</h4>
+    </ng-container>
+  </div>
+</div>

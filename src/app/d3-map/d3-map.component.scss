@@ -1,10 +1,21 @@
+@import "../../variables";
+@import "../story-navigator/story-navigator.component.scss";
+
+svg {
+  margin-top: $navigatorHeight + 25px;
+}
+
+.states {
+  fill: map-get($colors, dull);
+}
+
 .states :hover {
-  fill: red;
+  fill: map-get($colors, quaternary);
 }
 
 .state-borders {
   fill: none;
-  stroke: #fff;
+  stroke: map-get($colors, primary);
   stroke-width: 0.5px;
   stroke-linejoin: round;
   stroke-linecap: round;

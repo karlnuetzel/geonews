@@ -1,0 +1,8 @@
+@import "../../variables";
+
+.stories {
+  height: 40vh;
+  background-color: map-get($colors, tertiary);
+  border-top: solid 6px darken(map-get($colors, tertiary), 25);
+  margin-top: 25px;
+}

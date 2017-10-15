@@ -5,6 +5,9 @@ export class AuthService {
   private loggedIn: boolean = false;
   private email: string = null;
 
+  constructor() {
+  }
+
   public isLoggedIn(): boolean {
     return this.loggedIn;
   }

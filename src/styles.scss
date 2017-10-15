@@ -1,0 +1,9 @@
+@import "variables";
+
+* {
+  font-family: $defaultFont;
+}
+
+html, body {
+  background-color: map-get($colors, primary)
+}

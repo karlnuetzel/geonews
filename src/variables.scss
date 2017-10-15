@@ -1,3 +1,13 @@
+$defaultFont: "Helvetica";
+$colors: (
+  primary: #3255c3,
+  secondary: #b2dd6a,
+  tertiary: #8fd6cc,
+  quaternary: #ca9ce2,
+
+  dull: #bebebe
+);
+
 .center-me {
   text-align: center;
 }
@@ -16,4 +26,8 @@
 
 .max-width {
   width: 100%;
+}
+
+.inline {
+  display: inline;
 }
