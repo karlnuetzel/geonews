@@ -54,7 +54,7 @@ export class StoriesComponent implements OnInit {
     this.storyService.getRelatedStories(story).then(
       (relatedStories: Array<Story>): void => {
         story.relatedStories = relatedStories;
-        this.drawService.drawStories(story, relatedStories);
+        this.drawService.drawStories(story);
         this.stories = relatedStories;
       }
     ).catch(

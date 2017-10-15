@@ -44,6 +44,7 @@ export class ProjectionService {
                                 }
                                 stateCode = stateCode.replace(',',"");
                                 if (stateCode != match[4]){
+                                     stringID ="";
                                     stateCode = "";
                                     stringID = "";
                                 }else{
@@ -51,18 +52,21 @@ export class ProjectionService {
                                 }
                             }
                             console.log(stateCode);
+                            console.log(stringID);
                             if (stateCode != ""){
                                 d3Json.json("https://d3js.org/us-10m.v1.json", (error, us) => {
                                     if (error) {
                                         throw error;
                                     }
                                     this.path = d3Geo.geoPath();
-                                    this.path(topojson.mesh(us, us.objects.counties, function(a, b) { 
+                                    this.path(topojson.mesh(us, us.objects.counties, function(a, b) {
                                         if (a.id == stringID){
+                                            console.log(a.id);
                                             resolve(a);
                                             return;
                                         }
                                         if (b.id == stringID){
+                                            console.log(b.id);
                                             resolve(b);
                                             return;
                                         }

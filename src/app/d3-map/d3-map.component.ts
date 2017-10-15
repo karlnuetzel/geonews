@@ -2,10 +2,8 @@ import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import * as d3Selection from "d3-selection";
 import * as d3Json from "d3-request";
 import * as d3Geo from "d3-geo";
-import * as d3Scale from "d3-scale";
 import * as topojson from "topojson";
 import {DrawService} from "../services/draw.service";
-import * as proj4 from "proj4";
 
 @Component({
   selector: "geo-news-d3-map",
@@ -48,7 +46,7 @@ export class D3MapComponent implements OnInit {
 
   }
 
-  private initProjection(){
+  private initProjection() {
 
   }
 
@@ -83,7 +81,9 @@ export class D3MapComponent implements OnInit {
         .attr("fill", "none")
         .attr("stroke", "#777")
         .attr("stroke-width", 0.35)
-        .attr("d", this.path(topojson.mesh(us, us.objects.counties, function(a, b) { return (a.id / 1000 | 0) === (b.id / 1000 | 0); })))
+        .attr("d", this.path(topojson.mesh(us, us.objects.counties, function (a, b) {
+          return (a.id / 1000 | 0) === (b.id / 1000 | 0);
+        })))
         .attr('id', 'arcpath');
     });
 
@@ -91,7 +91,7 @@ export class D3MapComponent implements OnInit {
     this.path = d3Geo.geoPath()
       .projection(projection);
     let circle = this.svg.append("circle")
-      .attr("cx",  	32.806671)
+      .attr("cx", 32.806671)
       .attr("cy", -86.791130)
       .attr("r", 20)
     this.path = d3Geo.geoPath();
@@ -118,11 +118,11 @@ export class D3MapComponent implements OnInit {
     // 577.1659910357266,
     //   293.8780600766758
 
-    SVG
-      .append("circle")
-      .attr("cx",  577.1659910357266)
-      .attr("cy", 293.8780600766758)
-      .attr("r", CIRCLE_RADIUS);
+    // SVG
+    //   .append("circle")
+    //   .attr("cx",  681)
+    //   .attr("cy", 406)
+    //   .attr("r", CIRCLE_RADIUS);
     // SVG
     //   .append("circle")
     //   .attr("cx", 0)
@@ -146,22 +146,19 @@ export class D3MapComponent implements OnInit {
     // this.drawCircleAtLatLong(38.786331, -90.500221);
     // this.drawCircleAtLatLong(32.789998, -96.802962);
     // this.drawCircleAtLatLong(36.104587, -114.990251);
+
+    this.drawCircleAtLatLong(39.727826, -104.980776); //Denver
+    this.drawCircleAtLatLong(36.165658, -115.135504); //Las Vegas
+    this.drawCircleAtLatLong(28.516161, -81.371464); //Orlando
+    this.drawCircleAtLatLong(40.711258, -73.925526); //New York
+    this.drawCircleAtLatLong(47.593149, -122.326314); //Seattle
+    this.drawCircleAtLatLong(38.613968, -90.241169); //St. Louis
+    this.drawCircleAtLatLong(39.176544, -90.820019); //Elsberry
   }
 
   drawCircleAtLatLong(latitude: number, longitude: number): void {
     const SVG: any = d3Selection.select("svg");
-    const CIRCLE_RADIUS: number = 1;
-
-    const SVG_X: number = this.longitiudeToSVGX(longitude) + 25;
-    const SVG_Y: number = this.latitudeToSVGY(latitude, longitude) + 25;
-
-    console.log("long: " + longitude + ", svg_x: " + SVG_X);
-    console.log("lat: " + latitude + ", svg_y: " + SVG_Y);
-
-    SVG.append("circle")
-      .attr("cx", SVG_X)
-      .attr("cy", SVG_Y)
-      .attr("r", CIRCLE_RADIUS);
+    const CIRCLE_RADIUS: number = 5;
   }
 
   latitudeToSVGY(latitude: number, longitude: number): number {
