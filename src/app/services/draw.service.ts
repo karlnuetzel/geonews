@@ -80,7 +80,9 @@ export class DrawService {
                       }
                     )
                   })
-                .on("mouseout", () => { d3Selection.selectAll("line").remove()});
+                  .on("mouseout", () => {
+                    d3Selection.selectAll("line").remove()
+                  });
                 story.relatedStories.forEach(
                   (relatedStory) => {
                     targetLat = relatedStory.latitude;
@@ -93,7 +95,9 @@ export class DrawService {
                       .on("mouseover", (circle) => {
                         this.drawLines(originLat, originLong, relatedStory.latitude, relatedStory.longitude);
                       })
-                      .on("mouseout", () => { d3Selection.selectAll("line").remove()});
+                      .on("mouseout", () => {
+                        d3Selection.selectAll("line").remove()
+                      });
                   }
                 )
               }

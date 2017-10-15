@@ -1003,13 +1003,29 @@ export class StoryService {
         //long
         jso.articles.forEach(
           (article) => {
-            let story: Story = new Story(article.title, article.description, article.url, article.publishedAt, article.latitudes[0], article.longitudes[0])
+            let adjustedLat = article.latitudes[0];
+            let adjustedLong = article.longitudes[0];
+            if (article.latitudes[0] === 0) {
+              adjustedLat = this.randomLatitude();
+            }
+            if (article.longitudes[0] === 0) {
+              adjustedLong = this.randomLongitude();
+            }
+            let story: Story = new Story(article.title, article.description, article.url, article.publishedAt, adjustedLat, adjustedLong, this);
             this.stories.push(story);
           }
         );
       }
     );
   }
+
+  randomLatitude() {
+    return Math.random() * (46 - 34) + 34
+  }
+
+  randomLongitude() {
+return Math.random() * (-92 - -114) + -114;
+   }
 
   getRelatedStories(story: Story): Promise<Array<Story>> {
     return new Promise(
