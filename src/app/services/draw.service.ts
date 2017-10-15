@@ -13,32 +13,36 @@ export class DrawService {
 
   constructor(private storyStackService: StoryStackService, private projectionService: ProjectionService, private bigData: BigDataService) {
     this.getSVG();
-    this.getCounty();
   }
 
   public getSVG(){
     this.svg = document.getElementById('map');
   }
 
-  public getCounty(){
-      this.projectionService.getCounty(38, -90)
-        .then((obj)=>{
-            let id = obj.id;
-            let string = this.bigData.returnGeoData();
-            let json = JSON.parse(string);
-            json.features.forEach((feature)=>{
-                if (feature.id == id){
-                    console.log(id);
-                    let x = feature.geometry.coordinates[0][0][0];
-                    let y = feature.geometry.coordinates[0][0][1];
-                    console.log(x);
-                    console.log(y);
-                }
+  public getCounty(story:Story): Promise<Story> {
+      return new Promise((resolve, reject)=>{
+          let latitude = story.latitude;
+          let longitude =story.longitude;
+            this.projectionService.getCounty(latitude, longitude)
+            .then((obj)=>{
+                let id = obj.id;
+                let string = this.bigData.returnGeoData();
+                let json = JSON.parse(string);
+                json.features.forEach((feature)=>{
+                    if (feature.id == id){
+                        let x = feature.geometry.coordinates[0][0][0];
+                        let y = feature.geometry.coordinates[0][0][1];
+                        story.latitude = x;
+                        story.longitude = y;
+                        resolve(story);
+                    }
+                })
+                reject();
             })
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
+            .catch((error)=>{
+                console.log(error);
+            })
+      });
   }
 
   public clearMap() {
@@ -46,6 +50,22 @@ export class DrawService {
   }
 
   public drawStories(story: Story, relatedStories: Story[]) {
+      
+    this.getCounty(story).then(
+        (str)=>{
+            story = str;
+        }
+    )
+    relatedStories.forEach(
+        (relatedStory)=>{
+            this.getCounty(relatedStory).then(
+                (str)=>{
+                    relatedStory = str;
+                }
+            )
+        }
+    )
+
     let originLat = story.latitude;
     let originLong = story.longitude;
     let targetLat;

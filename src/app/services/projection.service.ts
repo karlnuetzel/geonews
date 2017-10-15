@@ -45,6 +45,7 @@ export class ProjectionService {
                                 stateCode = stateCode.replace(',',"");
                                 if (stateCode != match[4]){
                                     stateCode = "";
+                                    stringID = "";
                                 }else{
                                     break;
                                 }
