@@ -16,6 +16,10 @@ import {CommonModule} from "@angular/common";
 import {D3Service} from "d3-ng2-service";
 import { D3MapComponent } from './d3-map/d3-map.component';
 import {StoryService} from "./services/story.service";
+import {DrawService} from "./services/draw.service";
+import {LocalStorageService} from "./services/local-storage.service";
+import { StoryComponent } from './story/story.component';
+import {StoryStackService} from "./services/story-stack.service";
 
 const routes: Routes = [
   {
@@ -53,7 +57,8 @@ const routes: Routes = [
     StoryNavigatorComponent,
     GeoNewsComponent,
     StoryNavigatorComponent,
-    StoriesComponent
+    StoriesComponent,
+    StoryComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,10 @@ const routes: Routes = [
     AuthService,
     AuthGuard,
     D3Service,
-    StoryService
+    StoryService,
+    DrawService,
+    LocalStorageService,
+    StoryStackService
   ],
   entryComponents: [
     AppComponent

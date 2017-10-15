@@ -1,0 +1,13 @@
+@import "../../variables";
+
+$storyContainerPadding: 25px;
+
+.story-container {
+  padding: $storyContainerPadding;
+  border: 3px solid darken(map-get($colors, tertiary), 20);
+  margin-bottom: 10px;
+}
+
+.story-container:hover {
+  background-color: lighten(map-get($colors, tertiary), 10);
+}

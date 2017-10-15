@@ -1,8 +1,9 @@
 @import "../../variables";
 
 .stories {
-  height: 40vh;
+  min-height: 20vh;
   background-color: map-get($colors, tertiary);
   border-top: solid 6px darken(map-get($colors, tertiary), 25);
   margin-top: 25px;
+  padding-bottom: 30px;
 }

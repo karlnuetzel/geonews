@@ -1,7 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {Http/*, Headers, RequestOptions, Response*/} from "@angular/http";
+import {Http} from "@angular/http";
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
+import {LocalStorageService} from "../services/local-storage.service";
+
 // import {Configuration} from "../../configuration";
 
 @Component({
@@ -15,10 +17,17 @@ export class LoginComponent implements OnInit {
 
   constructor(private http: Http,
               private router: Router,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private localStorageService: LocalStorageService) {
   }
 
   ngOnInit(): void {
+    const storedCredentials = this.localStorageService.fetchValueFromKey("_credentials");
+    console.log(storedCredentials);
+    if (storedCredentials !== null) {
+      this.authService.login(storedCredentials.email);
+      this.router.navigate(["/home"]);
+    }
   }
 
   login(): void {
@@ -27,6 +36,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
 
+    this.localStorageService.saveValueWithKey("_credentials", CREDENTIALS);
     this.authService.login(this.email);
     this.router.navigate(["/home"]);
 
