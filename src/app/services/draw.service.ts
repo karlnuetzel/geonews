@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 import {StoryStackService} from "../services/story-stack.service";
 import {ProjectionService} from "../services/projection.service";
 import * as d3Selection from "d3-selection";
+import {BigDataService} from "../services/bigdata.service";
 
 @Injectable()
 export class DrawService {
@@ -10,7 +11,7 @@ export class DrawService {
   private svg: any;
   private circles: any;
 
-  constructor(private storyStackService: StoryStackService, private projectionService: ProjectionService) {
+  constructor(private storyStackService: StoryStackService, private projectionService: ProjectionService, private bigData: BigDataService) {
     this.getSVG();
     this.getCounty();
   }
@@ -20,13 +21,20 @@ export class DrawService {
   }
 
   public getCounty(){
-      this.projectionService.getCounty(47.400902, -121.490494)
+      this.projectionService.getCounty(38, -90)
         .then((obj)=>{
             let id = obj.id;
-            //features->for afterEach(feature) ->id->coordinates[0][0][0]&&[1]
-            //if(document.getElementById('hax')){
-                //d3Selection.select("#hax").append('circle').attr("r", "40");
-            //}
+            let string = this.bigData.returnGeoData();
+            let json = JSON.parse(string);
+            json.features.forEach((feature)=>{
+                if (feature.id == id){
+                    console.log(id);
+                    let x = feature.geometry.coordinates[0][0][0];
+                    let y = feature.geometry.coordinates[0][0][1];
+                    console.log(x);
+                    console.log(y);
+                }
+            })
         })
         .catch((error)=>{
             console.log(error);
