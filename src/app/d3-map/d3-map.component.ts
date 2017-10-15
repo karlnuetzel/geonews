@@ -13,12 +13,7 @@ import * as topojson from "topojson";
 export class D3MapComponent implements OnInit {
 
   private svg: any;
-  private width: number;
-  private height: number;
-
-  private projection: any;
   private path: any;
-  private g: any;
 
   constructor() {
   }
@@ -33,10 +28,12 @@ export class D3MapComponent implements OnInit {
 
   private initSvg() {
 
-    this.svg = d3Selection.select("svg");
-    this.width = this.svg.attr("width");
-    this.height = this.svg.attr("height");
-
+    this.svg = d3Selection
+      .select("div#container")
+      .append("svg")
+      .attr("preserveAspectRatio", "xMinYMin meet")
+      .attr("viewBox", "0 0 1294 1294")
+      .classed("svg-content-responsive", true);
   }
 
   private initPath() {
@@ -65,7 +62,6 @@ export class D3MapComponent implements OnInit {
         .attr("d", this.path(topojson.mesh(us, us.objects.states, function (a, b) {
           return a !== b;
         })));
-
     });
   }
 }
