@@ -32,7 +32,7 @@ export class D3MapComponent implements OnInit {
       .select("div#container")
       .append("svg")
       .attr("preserveAspectRatio", "xMinYMin meet")
-      .attr("viewBox", "0 0 1294 1294")
+      .attr("viewBox", "-50 0 1000 667")// + (window.innerWidth / 1.2) + " " + window.innerHeight)
       .classed("svg-content-responsive", true);
   }
 
