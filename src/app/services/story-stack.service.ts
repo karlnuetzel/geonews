@@ -17,7 +17,9 @@ export class StoryStackService {
 
   public pop(): Story {
     const POPPED_STORY: Story = StoryStackService.storyStack.pop();
-    this.onStoryStackChanged.emit();
+    if (POPPED_STORY != null) {
+      this.onStoryStackChanged.emit();
+    }
     return POPPED_STORY;
   }
 

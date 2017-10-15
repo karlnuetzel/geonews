@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     const storedCredentials = this.localStorageService.fetchValueFromKey("_credentials");
-    console.log(storedCredentials);
     if (storedCredentials !== null) {
       this.authService.login(storedCredentials.email);
       this.router.navigate(["/home"]);

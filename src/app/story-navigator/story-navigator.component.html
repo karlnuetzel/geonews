@@ -1,9 +1,18 @@
 <div class="row story-navigator-bar">
   <div class="col-md-1 back-arrow-container center-me">
-    <i (click)="goBack();" class="fa fa-arrow-left back-arrow" aria-hidden="true"></i>
+    <ng-container *ngIf="currentStory.title == 'No story selected'">
+      <i (click)="goBack();" class="fa fa-arrow-left back-arrow no-story"></i>
+    </ng-container>
+    <ng-container *ngIf="currentStory.title != 'No story selected'">
+      <i (click)="goBack();" class="fa fa-arrow-left back-arrow"></i>
+    </ng-container>
   </div>
   <div class="col-md-11 current-story-section">
-    <p class="inline">CURRENT STORY: </p>
-    <p class="inline">{{currentStory.title}}</p>
+    <ng-container *ngIf="currentStory.title == 'No story selected'">
+      <span class="inline">CURRENT STORY: <p class="inline no-story">None selected</p></span>
+    </ng-container>
+    <ng-container *ngIf="currentStory.title != 'No story selected'">
+      <span class="inline">CURRENT STORY: {{currentStory.title}}</span>
+    </ng-container>
   </div>
 </div>

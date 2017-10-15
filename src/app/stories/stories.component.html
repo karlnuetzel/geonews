@@ -1,12 +1,32 @@
 <div class="row stories">
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <h2 class="center-me">Top Stories</h2>
-        <ng-container *ngFor="let story of stories; let i = index;">
-          <geo-news-story [story]="story" [rank]="i + 1" (click)="storyClicked(story)"></geo-news-story>
-        </ng-container>
+      <div class="col-md-6 col-md-offset-3 tabs">
+        <div class="row">
+          <div class="col-md-6 center-me">
+            <button class="btn btn-default" (click)="switchMode('top');">Top Stories</button>
+          </div>
+          <div class="col-md-6 center-me">
+            <button class="btn btn-default" [disabled]="getCurrentStory().title == 'No story selected'" (click)="switchMode('related');">Related Stories</button>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <ng-container *ngIf="mode == 'top'">
+          <h2 class="center-me">Top Stories</h2>
+          <ng-container *ngFor="let topStory of topStories; let i = index;">
+            <geo-news-story [story]="topStory" [rank]="i + 1" (click)="storyClicked(topStory);"></geo-news-story>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="mode == 'related'">
+          <h2 class="center-me">Related Stories</h2>
+          <ng-container *ngFor="let story of stories; let i = index;">
+            <geo-news-story [story]="story" [rank]="i + 1" (click)="storyClicked(story);"></geo-news-story>
+          </ng-container>
+        </ng-container>
+        </div>
     </div>
   </div>
 </div>

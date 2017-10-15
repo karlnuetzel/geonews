@@ -31,4 +31,15 @@ $borderColor: rgba(red(darken($backgroundColor, $darkenAmount)), green(darken($b
 .current-story-section {
   line-height: $currentStorySectionLineHeight;
   font-size: $currentStorySectionFontSize;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+.no-story {
+  color: darken(map-get($colors, dull), 24);
 }
