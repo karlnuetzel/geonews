@@ -20,6 +20,8 @@ import {DrawService} from "./services/draw.service";
 import {LocalStorageService} from "./services/local-storage.service";
 import { StoryComponent } from './story/story.component';
 import {StoryStackService} from "./services/story-stack.service";
+import {ProjectionService} from "./services/projection.service";
+import {BigDataService} from "./services/bigdata.service";
 
 const routes: Routes = [
   {
@@ -74,7 +76,9 @@ const routes: Routes = [
     StoryService,
     DrawService,
     LocalStorageService,
-    StoryStackService
+    StoryStackService,
+    ProjectionService,
+    BigDataService
   ],
   entryComponents: [
     AppComponent

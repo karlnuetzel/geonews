@@ -25,10 +25,14 @@
     "core-js": "^2.4.1",
     "d3-ng2-service": "^1.21.0",
     "d3-request": "^1.0.6",
+    "d3-scale": "^1.0.6",
+    "fetch": "^1.1.0",
     "intl": "^1.2.5",
+    "proj4": "^2.4.4",
     "rxjs": "^5.4.2",
     "topojson": "^3.0.2",
     "web-animations-js": "^2.3.1",
+    "xml2js": "^0.4.19",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
